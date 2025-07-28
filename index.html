@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Flutter Web App">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="FlutterApp">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="icons/logo.png" />
+  <title>Rahul P</title>
+
+  <!-- Lottie Player -->
+  <script src="https://unpkg.com/lottie-web@5.7.6/build/player/lottie.min.js"></script>
+
+  <style>
+    #splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="splash">
+    <div id="lottie-container" style="width: 200px; height: 200px;"></div>
+  </div>
+
+  <!-- Main Flutter Web App -->
+  <script src="flutter_bootstrap.js" async></script>
+
+  <!-- Lottie Animation Trigger -->
+  <script>
+    lottie.loadAnimation({
+      container: document.getElementById('lottie-container'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'trail.json' // <- your local JSON file here
+    });
+
+    window.addEventListener('flutter-first-frame', function () {
+      // Add delay before hiding splash screen
+
+      document.getElementById('splash').style.display = 'none';
+      // 2000 milliseconds = 2 seconds
+    });
+
+  </script>
+</body>
+
+</html>
